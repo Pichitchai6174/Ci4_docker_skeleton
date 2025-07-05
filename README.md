@@ -71,3 +71,6 @@ This setup is designed for PHP developers who want to start projects quickly wit
   docker-compose up -d
   ```
 - If Composer fails due to missing PHP extensions, verify that your Dockerfile installs all required extensions
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
