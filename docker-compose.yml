@@ -21,6 +21,7 @@ services:
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
+    command: /bin/sh -c "composer install && apache2-foreground"
 
   # MySQL Database Service
   database:
