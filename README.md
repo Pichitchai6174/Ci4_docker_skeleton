@@ -1,20 +1,20 @@
-# Ci4_docker_skeleton
+# Ci4 Docker Skeleton Template
 
-A basic infrastructure for developing applications with CodeIgniter 4 integrated with Docker in a simple and flexible way.  
-This setup is designed for PHP developers who want to start projects quickly without wasting time managing environment configurations.
+A ready-to-use **template repository** for developing applications with CodeIgniter 4, fully integrated with Docker for a simple and flexible workflow.
 
 ---
 
 ## Features
 
-- Ready-to-use Docker environment with PHP 8.1 and Apache  
-- Pre-installed necessary PHP extensions for CodeIgniter 4  
-- MySQL 8 database container with persistent volume  
-- phpMyAdmin container for easy database management  
-- Composer installed and ready inside the container  
-- Apache configuration with mod_rewrite enabled for clean URLs  
-- Volume mounting for live code editing without rebuilding containers  
-- Environment variable support for easy configuration
+- Template repository: Click "Use this template" on GitHub to start your own project instantly
+- Dockerized PHP 8.1 + Apache environment
+- Pre-installed PHP extensions for CodeIgniter 4
+- MySQL 8 database container with persistent volume
+- phpMyAdmin for easy DB management
+- Composer installed and auto-run inside the container
+- Apache mod_rewrite enabled for clean URLs
+- Volume mounting for live code editing
+- Environment variable support via .env
 
 ---
 
@@ -22,55 +22,60 @@ This setup is designed for PHP developers who want to start projects quickly wit
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/get-started) installed on your machine  
-- [Docker Compose](https://docs.docker.com/compose/install/) installed  
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Installation
+### Usage
 
-1. Clone this repository
+1. Click **"Use this template"** on GitHub to create your own repository
+2. Clone your new repository
 
    ```bash
-   git clone https://github.com/pichitchai6174/Ci4_docker_skeleton.git
-   cd Ci4_docker_skeleton
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
 
-2. Copy .env.example to .env and update your environment variables (database credentials, app URL, etc.)
-3. Build and start the Docker containers
+3. Copy `.env.example` to `.env` and update environment variables as needed
+4. Build and start the Docker containers:
 
    ```bash
    docker-compose up -d --build
+   ```
 
-4. Access your application at http://localhost:8080 (or your configured port)
-5. Access phpMyAdmin at http://localhost:8081 for database management (or your configured port)
+5. Wait a moment for Composer autoload and dependencies to finish installing inside the container (first run may take a while)
+6. Access your app at http://localhost:8080 (or your configured port)
+7. Access phpMyAdmin at http://localhost:8081 (or your configured port)
 
 ## Configuration
-- PHP configuration file is mounted from ./docker/php/php.ini — you can customize PHP settings there
-- MySQL configuration file is mounted from ./docker/mysql/my.cnf
-- Application environment variables are managed in .env
+- PHP config: `./docker/php/php.ini`
+- MySQL config: `./docker/mysql/my.cnf`
+- App environment: `.env`
 
 ## Folder Structure
 
-   ```bash
-  Ci4_docker_skeleton/
-  ├── app/                 # Your CodeIgniter 4 application code
-  ├── docker/
-  │   ├── apache/          # Apache configuration files
-  │   ├── mysql/           # MySQL configuration files
-  │   └── php/             # PHP configuration files
-  ├── writable/            # Writable folder for logs, cache, sessions
-  ├── docker-compose.yml   # Docker Compose configuration
-  ├── Dockerfile           # Dockerfile for PHP/Apache container
-  ├── composer.json        # Composer dependencies
-  └── .env.example         # Example environment variables
-  ```
+```bash
+Ci4_docker_skeleton/
+├── app/                 # CodeIgniter 4 application code
+├── docker/
+│   ├── apache/          # Apache config
+│   ├── mysql/           # MySQL config
+│   └── php/             # PHP config
+├── writable/            # Logs, cache, sessions
+├── docker-compose.yml   # Docker Compose config
+├── Dockerfile           # PHP/Apache Dockerfile
+├── composer.json        # Composer dependencies
+└── .env.example         # Example environment variables
+```
 
 ## Troubleshooting
-- If you encounter permission issues, make sure the writable/ folder has correct permissions
-- To rebuild containers without cache:
+- Permission issues: Ensure `writable/` has correct permissions
+- If the app is not available right after `docker-compose up`, wait a bit longer for Composer to finish installing dependencies
+- Rebuild containers without cache:
   ```bash
   docker-compose build --no-cache
   docker-compose up -d
   ```
-- If Composer fails due to missing PHP extensions, verify that your Dockerfile installs all required extensions
+- Composer errors: Check required PHP extensions in Dockerfile
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+MIT License. See the LICENSE file for details.
