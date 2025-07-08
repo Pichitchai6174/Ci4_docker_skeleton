@@ -34,8 +34,6 @@ WORKDIR /var/www/html
 
 COPY composer.json composer.lock* ./
 
-RUN composer install --no-dev --optimize-autoloader
-
 COPY . .
 
 RUN chown -R www-data:www-data /var/www/html \
@@ -46,4 +44,6 @@ COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.con
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
