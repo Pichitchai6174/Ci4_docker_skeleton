@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     nano \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
+        mysqli \
         pdo_mysql \
         mbstring \
         exif \
